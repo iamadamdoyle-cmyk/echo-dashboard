@@ -32,7 +32,10 @@
     return parts[2] + "-" + parts[0] + "-" + parts[1];
   }
   function fit() {
-    var scale = Math.min(window.innerWidth / 960, window.innerHeight / 480);
+    // Keep all three thirds across the full width when Silk leaves 380px high.
+    var height = Math.max(380, Math.min(480, window.innerHeight * 960 / window.innerWidth));
+    var scale = Math.min(window.innerWidth / 960, window.innerHeight / height);
+    el("dashboard").style.height = height + "px";
     el("dashboard").style.transform = "translate(-50%, -50%) scale(" + scale + ")";
   }
   fit();

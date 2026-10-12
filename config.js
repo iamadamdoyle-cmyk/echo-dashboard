@@ -9,5 +9,6 @@ window.DASHBOARD_CONFIG = {
   weatherEnabled: true,
   keepAwake: true,
   audioFile: "assets/silence.mp3",
-  weatherRefreshMinutes: 15
+  weatherRefreshMinutes: 15,
+  sixersRefreshMinutes: 60
 };

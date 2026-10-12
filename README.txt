@@ -1,4 +1,4 @@
-ECHO SHOW DASHBOARD — VERSION 1
+ECHO SHOW DASHBOARD — VERSION 2: THREE COLUMNS + SIXERS
 Prepared and sources checked: October 12, 2026
 
 START HERE
@@ -11,11 +11,14 @@ Device name: Adam's Office.
 
 GitHub Pages is enabled from main / (root), with HTTPS enforced. Published
 Cherry Hill weather and silent MP3 playback were verified in desktop Chrome.
-The user confirmed Silk opens on the Echo, but MyPage voice launch currently
-returns "Sorry I wasn't able to navigate to my page". The MyPage link and
-continuous operation on the physical Echo remain unfinished.
+The user confirmed a 20-minute idle test on the Echo and successful return after
+asking the time and dismissing a timer, with silent audio still advancing.
+MyPage voice launch returns "Sorry I wasn't able to navigate to my page".
+MyPage recovery, reboot recovery and longer continuous operation remain unproven.
 
-This is a static clock/date/weather page for a 960 x 480 Echo Show 5.
+This is a static clock/date/weather/Sixers page for a 960 x 480 Echo Show 5.
+Three equal columns show clock/date, Cherry Hill weather, and the next Sixers
+opponent/date/start time. It also fills the 960 x 380 viewport observed in Silk.
 It keeps the stock OS and Alexa. It does not become the system Home screen.
 The silent audio is an experiment to keep the foreground browser active.
 Continuous operation on your H23K37 must be tested on the actual device.
@@ -31,6 +34,7 @@ echo-dashboard/
   styles.css                 Layout, typography and fit-to-viewport styling
   config.js                  Location, units, clock and keep-awake settings
   app.js                     Clock, weather, cache and audio diagnostics
+  sixers.js                  Next game, Eastern time and schedule cache
   .nojekyll                  Tells Pages to serve static files without Jekyll
   README.txt                 This setup and test guide
   assets/
@@ -42,6 +46,31 @@ echo-dashboard/
 No build process, framework, npm packages, API key, or third-party JavaScript.
 Upload the CONTENTS of this folder into the repository root, not a nested copy
 of the echo-dashboard folder. Never upload the ZIP as the website itself.
+
+SIXERS SCHEDULE
+
+The right third includes preseason, regular-season and playoff games. It shows
+Home/Away and the phase. Times are always Eastern (ET), including daylight-saving
+changes. Unconfirmed start times display Time TBD. At tipoff the panel advances
+to the next future scheduled game within a minute; this is not a live-score panel.
+
+Schedule data comes directly from ESPN's public site endpoint, with no API key:
+https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/20/schedule?season=2027&seasontype=1
+The code computes the season year and queries types 1, 2 and 3. Cross-origin
+access worked in Chrome on October 12, 2026. This is an undocumented ESPN endpoint,
+not a supported API contract; availability and schema can change. If it stops
+working the panel says Schedule unavailable and retries, without stopping the
+clock, weather or audio. No proxy or credentials are required.
+
+Polling is every 60 minutes by default (sixersRefreshMinutes in config.js).
+Failed updates retry every 15 minutes. Cached schedules can be displayed for up
+to 24 hours with a Cached label when an update fails. Expired caches and games
+whose start times have passed are not presented as the next game. An empty
+schedule displays Schedule not announced. An accurate device clock is required.
+
+Reference schedule: https://www.espn.com/nba/team/schedule/_/name/phi
+After deployment, refresh Silk once. Tap Start silent audio if it appears.
+Refreshing restarts the diagnostic uptime counter; repeat the idle test.
 
 WHAT IS CONFIRMED, AND WHAT IS EXPERIMENTAL
 
@@ -299,7 +328,8 @@ Pages 404 or old version:
 Cut-off text, small text, or browser toolbar:
   The physical panel is 960 x 480, but Silk may expose fewer CSS pixels due to
   scaling and browser chrome. ?test=1 shows the real viewport. The fixed design
-  uniformly fits that viewport; no scroll or forced fullscreen API is required.
+  fills viewports from 960 x 380 to 960 x 480 and scales for other sizes; no scroll
+  or forced fullscreen API is required.
   Begin at normal zoom/default browsing mode. Try Silk's desktop mode only if
   the layout is wrong and that option exists. Exact toolbar/fullscreen behavior
   is firmware-specific. The page cannot hide all Amazon system UI.
@@ -314,8 +344,8 @@ MyPage fails but direct Silk URL works:
   A March 17, 2026 first-person review on the US listing reports failure with
   Alexa+ and success on an older Show. Another September 29 review reports
   success on a Show 5. These are community reports, not an official diagnosis
-  for Adam's Office. Check the device's actual Alexa version before attributing
-  the failure to Alexa+. Do not change account-wide Alexa settings blindly.
+  for Adam's Office. The user confirmed Alexa+; that alone does not establish
+  the cause of the MyPage failure. Do not change account-wide Alexa settings blindly.
   https://www.amazon.com/dp/B09CG879RG
 
 8. COMPATIBILITY AND LIMITS
@@ -345,5 +375,6 @@ See the separate verification report supplied with the ZIP for completed checks.
 GitHub deployment and desktop playback of the hosted MP3 are complete. MyPage is
 enabled in the signed-in Amazon account, but its Echo launch is failing. Alexa's
 web assistant reported creating Restore Dashboard for Adam's Office; the saved
-routine and execution have not been independently verified. Echo idle, reboot,
-and normal Alexa interaction tests remain outstanding.
+routine and execution have not been independently verified. The user reported
+20 minutes idle, asking the time, and dismissing a timer all preserved the page
+and advancing audio. Longer idle, music/calls and reboot recovery remain untested.

@@ -7,12 +7,13 @@
   <meta name="referrer" content="no-referrer">
   <title>Echo Dashboard</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="styles.css?v=1">
-  <script src="config.js?v=1" defer></script>
-  <script src="app.js?v=1" defer></script>
+  <link rel="stylesheet" href="styles.css?v=2">
+  <script src="config.js?v=2" defer></script>
+  <script src="app.js?v=2" defer></script>
+  <script src="sixers.js?v=2" defer></script>
 </head>
 <body>
-  <main id="dashboard" aria-label="Clock and weather dashboard">
+  <main id="dashboard" aria-label="Clock, weather and Sixers dashboard">
     <section class="clock-panel" aria-label="Time and date">
       <div class="eyebrow" id="location">CHERRY HILL</div>
       <div class="time-row"><time id="clock">--:--</time><span id="period"></span></div>
@@ -26,7 +27,15 @@
       <div class="range"><span>High <strong id="high">--</strong></span><span>Low <strong id="low">--</strong></span></div>
       <div id="weather-status" role="status"></div>
     </section>
-    <footer><span id="audio-indicator" role="status"></span><a href="https://open-meteo.com/" target="_blank" rel="noopener">Weather: Open-Meteo · CC BY 4.0</a></footer>
+    <section class="sixers-panel" aria-label="Next Philadelphia 76ers game">
+      <div class="eyebrow">76ERS · NEXT GAME</div>
+      <div class="opponent"><div id="game-matchup">Loading schedule</div><div id="game-opponent"></div></div>
+      <div id="game-date"></div>
+      <div id="game-time"></div>
+      <div id="game-kind"></div>
+      <div id="game-status" role="status"></div>
+    </section>
+    <footer><span id="audio-indicator" role="status"></span><span class="sources"><a href="https://open-meteo.com/" target="_blank" rel="noopener">Weather: Open-Meteo · CC BY 4.0</a><a href="https://www.espn.com/nba/team/schedule/_/name/phi" target="_blank" rel="noopener">Schedule: ESPN</a></span></footer>
     <button id="start-audio" type="button" hidden>Start silent audio</button>
     <aside id="diagnostics" aria-label="Playback diagnostics" hidden>
       <div id="diagnostic-text"></div>
