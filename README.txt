@@ -3,6 +3,18 @@ Prepared and sources checked: October 12, 2026
 
 START HERE
 
+Published dashboard:
+https://iamadamdoyle-cmyk.github.io/echo-dashboard/
+Repository:
+https://github.com/iamadamdoyle-cmyk/echo-dashboard
+Device name: Adam's Office.
+
+GitHub Pages is enabled from main / (root), with HTTPS enforced. Published
+Cherry Hill weather and silent MP3 playback were verified in desktop Chrome.
+The user confirmed Silk opens on the Echo, but MyPage voice launch currently
+returns "Sorry I wasn't able to navigate to my page". The MyPage link and
+continuous operation on the physical Echo remain unfinished.
+
 This is a static clock/date/weather page for a 960 x 480 Echo Show 5.
 It keeps the stock OS and Alexa. It does not become the system Home screen.
 The silent audio is an experiment to keep the foreground browser active.
@@ -23,6 +35,7 @@ echo-dashboard/
   README.txt                 This setup and test guide
   assets/
     silence.mp3              Included, original silent audio (~30 seconds)
+    README.txt               Audio provenance
   tools/
     make-silence.ps1          Optional reproducible audio generator
 
@@ -295,6 +308,15 @@ MyPage fails but direct Silk URL works:
   Check skill availability/enabled state, same account, the saved URL and Save.
   Test explicit page 1 by voice. This isolates the launcher from the webpage.
   A service outage or skill retirement cannot be repaired by changing the HTML.
+  In this setup, Amazon's skill listing shows MyPage by XdreaM enabled, and the
+  user confirmed Silk opens. First test the published page by entering its URL
+  in Silk. This does not configure MyPage or make its routine work.
+  A March 17, 2026 first-person review on the US listing reports failure with
+  Alexa+ and success on an older Show. Another September 29 review reports
+  success on a Show 5. These are community reports, not an official diagnosis
+  for Adam's Office. Check the device's actual Alexa version before attributing
+  the failure to Alexa+. Do not change account-wide Alexa settings blindly.
+  https://www.amazon.com/dp/B09CG879RG
 
 8. COMPATIBILITY AND LIMITS
 
@@ -317,8 +339,11 @@ whenever Home regains the screen; ads inside other services are unaffected.
 Firmware updates can change behavior. Re-run the idle and Alexa-interaction tests
 after an update. No firmware changes or ad-server blocking are part of this setup.
 
-LOCAL VERIFICATION
+VERIFICATION
 
 See the separate verification report supplied with the ZIP for completed checks.
-GitHub deployment, account-specific skill activation, routine execution, and Echo
-idle/reboot/Alexa tests remain device/account tests until you perform them.
+GitHub deployment and desktop playback of the hosted MP3 are complete. MyPage is
+enabled in the signed-in Amazon account, but its Echo launch is failing. Alexa's
+web assistant reported creating Restore Dashboard for Adam's Office; the saved
+routine and execution have not been independently verified. Echo idle, reboot,
+and normal Alexa interaction tests remain outstanding.
