@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="referrer" content="no-referrer">
+  <title>Echo Dashboard</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css?v=1">
+  <script src="config.js?v=1" defer></script>
+  <script src="app.js?v=1" defer></script>
+</head>
+<body>
+  <main id="dashboard" aria-label="Clock and weather dashboard">
+    <section class="clock-panel" aria-label="Time and date">
+      <div class="eyebrow" id="location">CHERRY HILL</div>
+      <div class="time-row"><time id="clock">--:--</time><span id="period"></span></div>
+      <div id="weekday">Loading date</div>
+      <div id="date"></div>
+    </section>
+    <section class="weather-panel" aria-label="Current weather">
+      <div class="eyebrow">WEATHER NOW</div>
+      <div class="temperature"><span id="temperature">--</span><span id="unit">°F</span></div>
+      <div id="condition">Loading weather</div>
+      <div class="range"><span>High <strong id="high">--</strong></span><span>Low <strong id="low">--</strong></span></div>
+      <div id="weather-status" role="status"></div>
+    </section>
+    <footer><span id="audio-indicator" role="status"></span><a href="https://open-meteo.com/" target="_blank" rel="noopener">Weather: Open-Meteo · CC BY 4.0</a></footer>
+    <button id="start-audio" type="button" hidden>Start silent audio</button>
+    <aside id="diagnostics" aria-label="Playback diagnostics" hidden>
+      <div id="diagnostic-text"></div>
+      <button id="pause-audio" type="button">Pause audio</button>
+    </aside>
+    <noscript><div class="no-script">Enable JavaScript in Silk to show the clock and weather.</div></noscript>
+  </main>
+  <!-- An unmuted track whose samples are silent. Do not add muted or volume=0. -->
+  <audio id="keep-alive" loop preload="auto" playsinline></audio>
+</body>
+</html>
