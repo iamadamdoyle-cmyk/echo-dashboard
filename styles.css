@@ -35,12 +35,12 @@ footer a { color: #91a1ae; text-decoration: none; }
 button { font-family: inherit; cursor: pointer; background: #e4edf5; color: #101820; border: 0; border-radius: 8px; font-size: 21px; padding: 10px 16px; }
 button:focus-visible, a:focus-visible { outline: 3px solid #80bffa; outline-offset: 3px; }
 #start-audio { position: absolute; left: 27px; bottom: 47px; }
-#diagnostics { position: absolute; left: 20px; right: 20px; bottom: 9px; height: 78px; padding: 8px 13px; background: #152535; border: 1px solid #4d6a81; border-radius: 8px; }
-#diagnostic-text { font-family: monospace; font-size: 14px; line-height: 1.4; white-space: pre-wrap; padding-right: 166px; }
-#pause-audio { position: absolute; right: 12px; top: 13px; font-size: 17px; }
-.testing #start-audio { left: auto; right: 32px; bottom: 25px; z-index: 2; font-size: 17px; padding: 8px 12px; }
+#diagnostics { position: absolute; left: 20px; right: 20px; bottom: 6px; height: 50px; padding: 6px 10px; background: #152535; border: 1px solid #4d6a81; border-radius: 6px; }
+#diagnostic-text { color: #82909c; font-family: monospace; font-size: 11px; line-height: 12px; white-space: pre-wrap; padding-right: 155px; }
+#pause-audio { position: absolute; right: 10px; top: 6px; font-size: 14px; line-height: 20px; padding: 8px 12px; }
+.testing #start-audio { left: auto; right: 31px; bottom: 13px; z-index: 2; font-size: 14px; line-height: 20px; padding: 8px 12px; }
 .testing footer { display: none; }
-.testing .clock-panel, .testing .weather-panel, .testing .sixers-panel { top: 20px; bottom: 96px; }
+.testing .clock-panel, .testing .weather-panel, .testing .sixers-panel { top: 20px; bottom: 64px; }
 .testing #weather-status, .testing #game-status { font-size: 12px; margin-top: 5px; }
 .testing .range { margin-top: 0; }
 .testing #game-kind { margin-top: 8px; }
